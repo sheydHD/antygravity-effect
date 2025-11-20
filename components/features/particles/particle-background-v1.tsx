@@ -9,11 +9,11 @@ const ParticleSystem = () => {
     const count = 2000;
 
     // Uniforms for the shader
-    const uniforms = useMemo(() => ({
+    const uniforms = useRef({
         uTime: { value: 0 },
         uMouse: { value: new THREE.Vector3(0, 0, 0) }, // Start at center to avoid long travel
         uResolution: { value: new THREE.Vector2(1, 1) }
-    }), []);
+    }).current;
 
     // Create shader material with animation logic moved to Vertex Shader
     const shaderMaterial = useMemo(() => {
@@ -35,7 +35,7 @@ const ParticleSystem = () => {
                 varying float vAlpha;
                 
                 void main() {
-                    vColor = color;
+                    vColor = color; // Base color (gray)
                     
                     // Original position
                     vec3 pos = position;
@@ -68,11 +68,11 @@ const ParticleSystem = () => {
                     float angle = atan(dy, dx);
                     
                     // Animation Constants
-                    float baseRadius = 3.5;
+                    float baseRadius = 4.0;
                     float borderThickness = 2.5;
                     
                     // Interaction Wave Calculation
-                    float waveInteraction = sin(angle * 2.0 - uTime * 2.0 * randomSpeed + randomPhase) * 0.2;
+                    float waveInteraction = sin(angle * 2.0 - uTime * 2.0 * randomSpeed + randomPhase) * 0.5;
                     float radiusWithWave = baseRadius + waveInteraction;
                     float distFromBorder = abs(dist - radiusWithWave);
                     
@@ -80,17 +80,36 @@ const ParticleSystem = () => {
                     float influence = max(0.0, 1.0 - distFromBorder / borderThickness);
                     
                     // Center Proximity
-                    float centerTransparency = min(dist / baseRadius, 0.70);
+                    float centerTransparency = min(dist / baseRadius, 1.0);
                     
                     // Final Position & Size Variables
                     vec3 finalPos = pos;
                     float finalSize = size;
                     float finalAlpha = alpha;
                     
+                    // --- COLOR LOGIC ---
+                    // Yulai Gradient Colors
+                    vec3 colorOrange = vec3(1.0, 0.537, 0.184); // #ff892f
+                    vec3 colorBlue = vec3(0.016, 0.929, 0.98);  // #04edfa
+                    
+                    // Calculate Gradient based on X position (approx range -17.5 to 17.5)
+                    float normalizedX = clamp((pos.x + 17.5) / 35.0, 0.0, 1.0);
+                    
+                    // Sharp transition (smoothstep over a small range)
+                    float gradientMix = smoothstep(0.4, 0.6, normalizedX);
+                    vec3 targetColor = mix(colorOrange, colorBlue, gradientMix);
+                    
+                    // Reveal color based on influence
+                    // We use a slightly boosted influence to make the color pop more
+                    float colorMix = smoothstep(0.0, 0.8, influence);
+                    
+                    // Mix base gray (vColor) with target gradient
+                    vColor = mix(vColor, targetColor, colorMix);
+
                     if (influence > 0.0) {
                         // --- INTERACTION ZONE (Wavy Border) ---
                         
-                        float radialPush = waveInteraction * influence * 1.5 * (0.7 + randomVariation * 0.6);
+                        float radialPush = waveInteraction * influence * 1.8 * (0.7 + randomVariation * 0.6);
                         float perpAngle = angle + (randomVariation - 0.5) * 0.5;
                         
                         vec3 push = vec3(
@@ -107,7 +126,7 @@ const ParticleSystem = () => {
                         float scale = minScale + influence * maxScale * centerTransparency;
                         finalSize *= scale;
                         
-                        finalAlpha = centerTransparency * 0.7;
+                        finalAlpha = centerTransparency * 0.5;
                         
                     } else if (dist < baseRadius) {
                         // --- INSIDE ZONE (Breathing) ---
@@ -128,7 +147,10 @@ const ParticleSystem = () => {
                         float breathingScale = 0.5 + sin(breathingPhase) * 0.3 * randomVariation;
                         finalSize *= breathingScale * centerTransparency;
                         
-                        finalAlpha = centerTransparency * 0.2;
+                        finalAlpha = centerTransparency * 0.7;
+                        
+                        // Also reveal some color inside the circle for continuity
+                        vColor = mix(vColor, targetColor, 0.3 + centerTransparency * 0.5);
                         
                     } else {
                         // --- OUTSIDE ZONE (Not near pointer) ---
@@ -137,7 +159,7 @@ const ParticleSystem = () => {
                         finalSize *= 0.5; 
                         
                         // Keep them somewhat transparent so they don't overwhelm, but visible
-                        finalAlpha = 0.3; 
+                        finalAlpha = 0.4; 
                     }
                     
                     vAlpha = finalAlpha;
@@ -275,7 +297,7 @@ const ParticleBackgroundV1 = () => {
                     alpha: false
                 }}
             >
-                <color attach="background" args={["#ffffff"]} />
+                <color attach="background" args={["#faf9f7"]} />
                 <ParticleSystem />
             </Canvas>
         </div>

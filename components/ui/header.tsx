@@ -17,9 +17,9 @@ export default function Header() {
 
             <header className="fixed top-0 left-0 right-0 z-50">
                 {/* Main Header Bar */}
-                <div className="bg-white px-8 py-2 flex items-center" style={{ paddingLeft: '3cm', gap: '0.5cm' }}>
+                <div className="bg-[#faf9f7] px-8 py-2 flex items-center" style={{ paddingLeft: '3cm', gap: '0.5cm' }}>
                     {/* Logo */}
-                    <Link href="/" className="text-lg font-semibold text-black hover:text-gray-700 transition-colors">
+                    <Link href="/" className="text-lg font-semibold text-[#0e101a] hover:text-gray-600 transition-colors">
                         Antigravity
                     </Link>
 
@@ -30,9 +30,9 @@ export default function Header() {
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
                         <button
-                            className="flex items-center gap-2 text-sm font-medium text-black transition-all px-3 py-1.5 rounded-full"
+                            className="flex items-center gap-2 text-sm font-medium text-[#0e101a] transition-all px-3 py-1.5 rounded-full"
                             style={{
-                                backgroundColor: isDropdownOpen ? 'rgba(0, 0, 0, 0.10)' : 'transparent'
+                                backgroundColor: isDropdownOpen ? 'rgba(14, 16, 26, 0.05)' : 'transparent'
                             }}
                         >
                             <span>Versions</span>
@@ -52,7 +52,7 @@ export default function Header() {
 
                         {/* Dropdown Menu - Full Width White Stripe */}
                         <div
-                            className={`fixed left-0 right-0 bg-white transition-all duration-300 ease-in-out ${isDropdownOpen
+                            className={`fixed left-0 right-0 bg-[#faf9f7] transition-all duration-300 ease-in-out ${isDropdownOpen
                                 ? 'opacity-100 translate-y-0 pointer-events-auto'
                                 : 'opacity-0 -translate-y-2 pointer-events-none'
                                 }`}
@@ -62,16 +62,17 @@ export default function Header() {
                                 paddingBottom: '2cm',
                                 borderBottomLeftRadius: '35px',
                                 borderBottomRightRadius: '35px',
+                                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.05)'
                             }}
                         >
                             <div className="flex items-center" style={{ paddingLeft: '3cm', gap: '3cm' }}>
                                 {/* Left Side - Descriptive Text */}
                                 <div className="flex-shrink-0" style={{ maxWidth: '400px' }}>
-                                    <h2 className="text-2xl font-semibold text-black mb-2">
+                                    <h2 className="text-2xl font-semibold text-[#0e101a] mb-2">
                                         Intuitive for every type of builder
                                     </h2>
                                     <p className="text-base text-gray-600">
-                                        Explore how Google Antigravity helps you build
+                                        Explore how Particle Antigravity helps you build
                                     </p>
                                 </div>
 
@@ -79,13 +80,13 @@ export default function Header() {
                                 <div className="flex flex-col gap-1">
                                     <Link
                                         href="/versions/v1"
-                                        className="text-sm font-medium text-black hover:text-gray-700 transition-colors py-2 px-4 rounded-full hover:bg-gray-100"
+                                        className="text-sm font-medium text-[#0e101a] hover:text-gray-600 transition-colors py-2 px-4 rounded-full hover:bg-gray-200/50"
                                     >
                                         Version 1
                                     </Link>
                                     <Link
                                         href="/versions/v2"
-                                        className="text-sm font-medium text-black hover:text-gray-700 transition-colors py-2 px-4 rounded-full hover:bg-gray-100"
+                                        className="text-sm font-medium text-[#0e101a] hover:text-gray-600 transition-colors py-2 px-4 rounded-full hover:bg-gray-200/50"
                                     >
                                         Version 2
                                     </Link>
