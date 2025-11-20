@@ -2,6 +2,7 @@ import { ThreeElements } from '@react-three/fiber'
 
 declare global {
   namespace JSX {
-    interface IntrinsicElements extends ThreeElements {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+    interface IntrinsicElements extends ThreeElements { }
   }
 }

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/purity */
 
 import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -235,26 +236,22 @@ const ParticleSystem = () => {
                 <bufferAttribute
                     attach="attributes-position"
                     count={count}
-                    array={positions}
-                    itemSize={3}
+                    args={[positions, 3]}
                 />
                 <bufferAttribute
                     attach="attributes-color"
                     count={count}
-                    array={colors}
-                    itemSize={3}
+                    args={[colors, 3]}
                 />
                 <bufferAttribute
                     attach="attributes-size"
                     count={count}
-                    array={sizes}
-                    itemSize={1}
+                    args={[sizes, 1]}
                 />
                 <bufferAttribute
                     attach="attributes-aRandom"
                     count={count}
-                    array={randoms}
-                    itemSize={3}
+                    args={[randoms, 3]}
                 />
             </bufferGeometry>
             <primitive object={shaderMaterial} attach="material" />
