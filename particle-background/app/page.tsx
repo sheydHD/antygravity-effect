@@ -7,7 +7,7 @@ export default function HomePage() {
       <ParticleBackgroundV1 />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none select-none" style={{ zIndex: 10 }}>
         <h1 className="text-7xl font-bold text-[#0e101a] mb-6 tracking-tighter">
-          Particle Antigravity
+          Particle Atomic
         </h1>
         <p className="text-2xl text-gray-600 mb-8">
           Experience the magic of particle interactions

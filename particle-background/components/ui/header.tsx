@@ -20,7 +20,7 @@ export default function Header() {
                 <div className="bg-[#faf9f7] px-8 py-2 flex items-center" style={{ paddingLeft: '3cm', gap: '0.5cm' }}>
                     {/* Logo */}
                     <Link href="/" className="text-lg font-semibold text-[#0e101a] hover:text-gray-600 transition-colors">
-                        Antigravity
+                        Atomic
                     </Link>
 
                     {/* Versions Dropdown */}
@@ -72,7 +72,7 @@ export default function Header() {
                                         Intuitive for every type of builder
                                     </h2>
                                     <p className="text-base text-gray-600">
-                                        Explore how Particle Antigravity helps you build
+                                        Explore how Particle Atomic helps you build
                                     </p>
                                 </div>
 
