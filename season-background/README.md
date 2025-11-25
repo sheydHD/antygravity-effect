@@ -1,106 +1,83 @@
-# Multi-Background Seasonal Particle Effects
+# Seasonal Background
 
-A delicate animated background system that changes with the seasons, built with React, TypeScript, and HTML5 Canvas.
+A beautiful animated background that transitions between different seasonal themes. Features dynamic weather effects and smooth color transitions to create an immersive seasonal atmosphere.
+
+## Preview
+
+<table>
+  <tr>
+    <td width="50%">
+      <b>Winter</b><br>
+      <img src="./public/images/winter.png" alt="Winter Theme">
+    </td>
+    <td width="50%">
+      <b>Spring</b><br>
+      <img src="./public/images/spring.png" alt="Spring Theme">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <b>Summer</b><br>
+      <img src="./public/images/summer.png" alt="Summer Theme">
+    </td>
+    <td width="50%">
+      <b>Autumn</b><br>
+      <img src="./public/images/autumn.png" alt="Autumn Theme">
+    </td>
+  </tr>
+</table>
 
 ## Features
 
-- **Four Seasonal Themes**:
-  - ❄️ **Winter**: Gentle snowflakes drifting down with swaying motion
-  - 🌸 **Spring**: Tiny pollen particles floating delicately
-  - ☀️ **Summer**: Small bees buzzing around with flowers
-  - 🍂 **Autumn**: Colorful leaves tumbling and swirling
-
-- **Performance Optimized**: Uses HTML5 Canvas with `requestAnimationFrame` for smooth 60fps animations
-- **Non-Intrusive**: Subtle particle effects with controlled opacity (0.6) that don't distract from content
-- **Fully Responsive**: Adapts to any screen size
-- **Easy Season Switching**: Header buttons with Lucide icons for quick theme changes
+* Four seasonal themes: Winter, Spring, Summer, and Autumn
+* Animated weather effects (snow, pollen, bees, leaves)
+* Smooth color gradients
+* Performance optimized with HTML5 Canvas
+* Responsive design
+* Interactive theme switching
 
 ## Tech Stack
 
-- React 18 + TypeScript
-- Vite for build tooling
-- Tailwind CSS for styling
-- Lucide React for icons
-- HTML5 Canvas for particle rendering
+* React 19
+* Vite
+* TypeScript
+* Tailwind CSS
+* Lucide React
+* HTML5 Canvas
 
 ## Getting Started
 
+### Prerequisites
+
+Make sure you have Node.js installed on your system. For faster package installation, we recommend using pnpm.
+
 ```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm install -g pnpm
 ```
+
+### Installation
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+### Running the Application
+
+Start the development server:
+
+```bash
+pnpm dev
+```
+
+The application will open in your default browser, typically at [http://localhost:5173](http://localhost:5173).
 
 ## Project Structure
 
-```
-src/
-├── components/
-│   ├── SeasonalBackground.tsx  # Canvas-based particle system
-│   └── Header.tsx              # Season selector UI
-├── App.tsx                     # Main application
-├── App.css                     # App styles
-└── index.css                   # Global styles + Tailwind
-```
-
-## How It Works
-
-### Particle System
-Each season has unique particle characteristics:
-
-- **Particle Count**: Configurable (default: 40)
-- **Size Range**: 1-8px depending on season
-- **Speed**: Very slow (0.1-0.8 pixels per frame)
-- **Opacity**: 0.2-0.7 for subtle effect
-
-### Canvas Rendering
-- Custom drawing functions for each particle type
-- Snowflakes: 6-pointed star pattern
-- Pollen: Simple golden circles
-- Bees: Ellipse body with stripes and wings
-- Flowers: 5-petal design with center
-- Leaves: Gradient-filled curved shapes with veins
-
-## Customization
-
-### Adjust Particle Count
-```tsx
-<SeasonalBackground season={season} particleCount={60} />
-```
-
-### Modify Particle Behavior
-Edit the `createParticle` function in `SeasonalBackground.tsx` to adjust size, speed, opacity, and movement patterns.
-
-## Integration
-
-To integrate into an existing project:
-
-1. Copy `components/SeasonalBackground.tsx`
-2. Import and add to your layout:
-```tsx
-import { SeasonalBackground } from './components/SeasonalBackground';
-
-function Layout() {
-  return (
-    <>
-      <SeasonalBackground season="winter" particleCount={40} />
-      {/* Your content here */}
-    </>
-  );
-}
-```
-
-## Browser Support
-
-Works in all modern browsers that support HTML5 Canvas and RequestAnimationFrame.
+* `/src` - Source code
+* `/src/components` - React components (SeasonalBackground, Header)
+* `/public` - Static assets
 
 ## License
 

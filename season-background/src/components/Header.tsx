@@ -19,7 +19,7 @@ export const Header = ({ currentSeason, onSeasonChange }: HeaderProps) => {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-800">
-            Seasonal Background Demo
+            {/* Seasonal Background Demo */}
           </h1>
           
           <div className="flex items-center gap-2">

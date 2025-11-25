@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Particle Background
+
+A dynamic 3D particle background effect built with React Three Fiber and Next.js. Features interactive particles that respond to mouse movement and create an immersive visual experience.
+
+## Preview
+
+### Version 1
+![Particle Background V1](./public/images/demo-V1.png)
+
+### Version 2
+![Particle Background V2](./public/images/demo-V2.png)
+
+## Features
+
+* Interactive 3D particle system
+* Mouse-responsive animations
+* Multiple effect versions (v1 & v2)
+* Built with React Three Fiber for smooth performance
+* Fully responsive design
+
+## Tech Stack
+
+* Next.js 16
+* React 19
+* Three.js
+* React Three Fiber
+* TypeScript
+* Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have Node.js installed on your system. For faster package installation, we recommend using pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+```
 
-## Learn More
+### Running the Application
 
-To learn more about Next.js, take a look at the following resources:
+Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the effect.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* `/app` - Next.js pages and routing
+* `/components/features/particles` - Particle effect components
+* `/components/ui` - UI components
+* `/components/layouts` - Layout components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Available Versions
+
+* **v1** - Basic particle background with mouse interaction
+* **v2** - Enhanced particle effects with additional animations
+
+## License
+
+MIT

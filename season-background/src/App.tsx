@@ -13,7 +13,7 @@ function App() {
       
       <Header currentSeason={season} onSeasonChange={setSeason} />
       
-      <main className="relative z-10 max-w-7xl mx-auto px-4 py-12">
+      {/* <main className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">
             Welcome to Seasonal Backgrounds
@@ -80,8 +80,8 @@ function App() {
               </ul>
             </div>
           </div>
-        </div>
-      </main>
+        </div> */}
+      {/* </main> */}
     </div>
   );
 }
